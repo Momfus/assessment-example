@@ -1,0 +1,17 @@
+
+
+<input type="text" [ngModel]="searchInput()" (ngModelChange)="searchInput.set($event)"/>
+<button (click)="onSearch()">Search</button>
+<button (click)="onClear()">Clear</button>
+
+@for (user of showUserList(); track user.id) {
+  <li>
+    <b>{{user.name}}</b> (email:  {{user.email}} )
+  </li>
+}@empty {
+  @if ( userList().length > 0 ) {
+    <h2>No user founded with the search: {{ searchInput() }}</h2>
+  } @else {
+    <h2>No user founded</h2>
+  }
+}
